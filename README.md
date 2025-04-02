@@ -8,7 +8,7 @@ Ce projet à pour objectif d'etre utilisé comme support de formation pour des n
 - **Frontend :** React
 - **Base de Données :** SQLite, SQLAlchemy
 - **Machine Learning :** XGBoost, Scikit-learn, LIME
-- **Dev de prod :** Pydantic, Pylint, Pytest
+- **Deploiement :** Pydantic, Pylint, Pytest
 - **Suivi des Expériences, Cycle de vie :** MLflow, LakeFS
 - **Orchestration :** Kubernetes
 - **Conteneurisation :** Docker
