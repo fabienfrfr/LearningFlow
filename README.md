@@ -1,4 +1,4 @@
-# refactored-tribble
+# TimescaleFlow
 MLOps-tooltrain
 
 Ce projet à pour objectif d'etre utilisé comme support de formation pour des non spécialistes et se former sur les outils MLOps.
