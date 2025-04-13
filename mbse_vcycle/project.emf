@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.capellacore="http://www.polarsys.org/capella/core/core/1.4.0" xmlns:org.polarsys.capella.core.data.cs="http://www.polarsys.org/capella/core/cs/1.4.0" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/1.4.0" xmlns:org.polarsys.capella.core.data.la="http://www.polarsys.org/capella/core/la/1.4.0" xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/1.4.0" xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/1.4.0">
+  <org.polarsys.capella.core.data.capellamodeller:Project xmi:id="_root" name="Drone Delivery System">
+    <ownedExtensions xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering" xmi:id="_systemEngineering" name="Drone Delivery System">
+      <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis" xmi:id="_operationalAnalysis" name="Operational Analysis">
+        <ownedFunctionPkg xmi:id="_operationalActivities" name="Operational Activities">
+          <ownedOperationalActivities xmi:id="_requestDelivery" name="Request Delivery"/>
+          <ownedOperationalActivities xmi:id="_performDelivery" name="Perform Delivery"/>
+          <ownedOperationalActivities xmi:id="_receivePackage" name="Receive Package"/>
+        </ownedFunctionPkg>
+        <ownedEntityPkg xmi:id="_operationalEntities" name="Operational Entities">
+          <ownedEntities xmi:id="_customer" name="Customer"/>
+          <ownedEntities xmi:id="_deliveryService" name="Delivery Service"/>
+        </ownedEntityPkg>
+      </ownedArchitectures>
+      <ownedArchitectures xsi:type="org.polarsys.capella.core.data.ctx:SystemAnalysis" xmi:id="_systemAnalysis" name="System Analysis">
+        <ownedFunctionPkg xmi:id="_systemFunctions" name="System Functions">
+          <ownedSystemFunctions xmi:id="_manageOrders" name="Manage Orders"/>
+          <ownedSystemFunctions xmi:id="_controlDrone" name="Control Drone"/>
+          <ownedSystemFunctions xmi:id="_navigateDrone" name="Navigate Drone"/>
+        </ownedFunctionPkg>
+        <ownedComponentPkg xmi:id="_systemActors" name="System Actors">
+          <ownedParts xmi:id="_droneSystem" name="Drone System"/>
+          <ownedParts xmi:id="_customerInterface" name="Customer Interface"/>
+        </ownedComponentPkg>
+      </ownedArchitectures>
+      <ownedArchitectures xsi:type="org.polarsys.capella.core.data.la:LogicalArchitecture" xmi:id="_logicalArchitecture" name="Logical Architecture">
+        <ownedFunctionPkg xmi:id="_logicalFunctions" name="Logical Functions">
+          <ownedLogicalFunctions xmi:id="_processOrder" name="Process Order"/>
+          <ownedLogicalFunctions xmi:id="_planRoute" name="Plan Route"/>
+          <ownedLogicalFunctions xmi:id="_flyDrone" name="Fly Drone"/>
+        </ownedFunctionPkg>
+        <ownedComponentPkg xmi:id="_logicalComponents" name="Logical Components">
+          <ownedLogicalComponents xmi:id="_orderManagement" name="Order Management"/>
+          <ownedLogicalComponents xmi:id="_flightControl" name="Flight Control"/>
+          <ownedLogicalComponents xmi:id="_navigationSystem" name="Navigation System"/>
+        </ownedComponentPkg>
+      </ownedArchitectures>
+      <ownedArchitectures xsi:type="org.polarsys.capella.core.data.pa:PhysicalArchitecture" xmi:id="_physicalArchitecture" name="Physical Architecture">
+        <ownedFunctionPkg xmi:id="_physicalFunctions" name="Physical Functions">
+          <ownedPhysicalFunctions xmi:id="_executeFlightPlan" name="Execute Flight Plan"/>
+          <ownedPhysicalFunctions xmi:id="_monitorBattery" name="Monitor Battery"/>
+          <ownedPhysicalFunctions xmi:id="_controlPropulsion" name="Control Propulsion"/>
+        </ownedFunctionPkg>
+        <ownedComponentPkg xmi:id="_physicalComponents" name="Physical Components">
+          <ownedPhysicalComponents xmi:id="_droneBody" name="Drone Body"/>
+          <ownedPhysicalComponents xmi:id="_propulsionSystem" name="Propulsion System"/>
+          <ownedPhysicalComponents xmi:id="_batterySystem" name="Battery System"/>
+          <ownedPhysicalComponents xmi:id="_navigationUnit" name="Navigation Unit"/>
+        </ownedComponentPkg>
+      </ownedArchitectures>
+    </ownedExtensions>
+  </org.polarsys.capella.core.data.capellamodeller:Project>
+</xmi:XMI>
