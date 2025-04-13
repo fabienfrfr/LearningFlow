@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: robot-control-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: robot-control-app
+  template:
+    metadata:
+      labels:
+        app: robot-control-app
+    spec:
+      containers:
+      - name: robot-control-app
+        image: robot-control-app:latest
+        ports:
+        - containerPort: 80
+

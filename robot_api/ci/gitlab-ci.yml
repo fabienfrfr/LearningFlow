@@ -1,0 +1,21 @@
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script:
+    - pytest
+    - pylint src/
+
+build:
+  stage: build
+  script:
+    - docker build -t robot-control-app .
+
+deploy:
+  stage: deploy
+  script:
+    - kubectl apply -f deployment/kubernetes/deployment.yaml
+
