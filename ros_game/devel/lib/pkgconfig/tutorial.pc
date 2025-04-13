@@ -1,0 +1,8 @@
+prefix=/media/fabienfrfr/F6166FAF166F7013/0_JOBS/ROBOT/RosWebGame/devel
+
+Name: tutorial
+Description: Description of tutorial
+Version: 0.0.0
+Cflags: -I/media/fabienfrfr/F6166FAF166F7013/0_JOBS/ROBOT/RosWebGame/devel/include
+Libs: 
+Requires: 

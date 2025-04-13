@@ -1,0 +1,2 @@
+tutorial
+-DCATKIN_DEVEL_PREFIX=/media/fabienfrfr/F6166FAF166F7013/0_JOBS/ROBOT/RosWebGame/devel -DCMAKE_INSTALL_PREFIX=/media/fabienfrfr/F6166FAF166F7013/0_JOBS/ROBOT/RosWebGame/install -G Unix Makefiles

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+	<title> My Web Site </title>
+</head>
+<body>
+	<h1> Bonjour {{ Prenom }}, Bienvenue sur mon site (TRAIN-IT) !! </h1>
+	
+	<p> Bouton pour Scrappler HTML QCM + Training NLP (comparer avec bases sql UNION) </p>
+	
+	<p> Barre de chargement </p>
+	
+	<h3> Question generator (affilier probabilité à coté, pour aller vite dans les questions) </h3>
+	
+	{% if latest_question_list %}
+		<ul>
+		{% for question in latest_question_list %}
+			<!--
+			<!-- absolute link (not relative) ->
+		    <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+		    -->
+		    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No polls are available.</p>
+	{% endif %}
+
+	<h3> Score </h3>
+
+	<p> Basique data information (moyenne, score, mediane...), et lien vers visualisation complete (autre app) </p>
+
+</body>
+</html>

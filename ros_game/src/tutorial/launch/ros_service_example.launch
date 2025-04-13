@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="tutorial" type="service_server_node.py" name="service_serveur_node" output="screen"> </node>
+	<node pkg="tutorial" type="service_client_node.py" name="service_client_node" output="screen"> </node>
+</launch>
