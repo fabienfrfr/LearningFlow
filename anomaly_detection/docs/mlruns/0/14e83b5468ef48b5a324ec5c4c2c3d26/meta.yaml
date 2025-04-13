@@ -1,0 +1,15 @@
+artifact_uri: file:///home/fabien/Documents/0_VSCODE/LearningFlow/anomaly_detection/docs/mlruns/0/14e83b5468ef48b5a324ec5c4c2c3d26/artifacts
+end_time: 1744541505120
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 14e83b5468ef48b5a324ec5c4c2c3d26
+run_name: tasteful-snake-850
+run_uuid: 14e83b5468ef48b5a324ec5c4c2c3d26
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744541413451
+status: 3
+tags: []
+user_id: fabien

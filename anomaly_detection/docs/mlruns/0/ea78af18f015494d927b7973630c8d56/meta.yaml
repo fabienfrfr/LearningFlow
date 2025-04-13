@@ -1,0 +1,15 @@
+artifact_uri: file:///home/fabien/Documents/0_VSCODE/LearningFlow/anomaly_detection/docs/mlruns/0/ea78af18f015494d927b7973630c8d56/artifacts
+end_time: 1744541573882
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ea78af18f015494d927b7973630c8d56
+run_name: worried-asp-210
+run_uuid: ea78af18f015494d927b7973630c8d56
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744541505124
+status: 3
+tags: []
+user_id: fabien

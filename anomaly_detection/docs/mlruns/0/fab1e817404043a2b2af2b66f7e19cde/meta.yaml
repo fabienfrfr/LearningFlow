@@ -1,0 +1,15 @@
+artifact_uri: file:///home/fabien/Documents/0_VSCODE/LearningFlow/anomaly_detection/docs/mlruns/0/fab1e817404043a2b2af2b66f7e19cde/artifacts
+end_time: 1744541680309
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: fab1e817404043a2b2af2b66f7e19cde
+run_name: lyrical-quail-122
+run_uuid: fab1e817404043a2b2af2b66f7e19cde
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744541625446
+status: 3
+tags: []
+user_id: fabien

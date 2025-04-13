@@ -1,0 +1,15 @@
+artifact_uri: file:///home/fabien/Documents/0_VSCODE/LearningFlow/anomaly_detection/docs/mlruns/0/034f28c70cf44fe2ab44746a6fe88b05/artifacts
+end_time: 1744541735072
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 034f28c70cf44fe2ab44746a6fe88b05
+run_name: whimsical-slug-669
+run_uuid: 034f28c70cf44fe2ab44746a6fe88b05
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1744541731330
+status: 3
+tags: []
+user_id: fabien
