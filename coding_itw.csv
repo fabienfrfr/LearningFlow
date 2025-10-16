@@ -1,0 +1,46 @@
+Tableau Complet avec Exemples de Code et Questions de Coding Interview
+Thème,Question,Exemple de Code / Question de Coding Interview,Points Clés
+Fondamentaux ML,Expliquez la différence entre biais et variance. Comment les réduire ?,Question de coding interview : "Écrivez une fonction Python pour évaluer le biais et la variance d'un modèle de régression linéaire sur un jeu de données synthétique."
+from sklearn.linear_model import Ridge; Ridge(alpha=1.0).fit(X_train, y_train),Régularisation L2, cross-validation, trade-off biais-variance.
+,Quand utiliseriez-vous un Random Forest plutôt qu’un Gradient Boosting ?,Question de coding interview : "Comparez les performances de RandomForestClassifier et GradientBoostingClassifier sur le dataset Iris en utilisant cross_val_score."
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier; cross_val_score(RandomForestClassifier(), X, y, cv=5),Robustesse vs précision, temps d'entraînement, interprétabilité.
+Traitement Données,Comment optimisez-vous un pipeline Spark pour réduire les coûts ?,Question de coding interview : "Optimisez ce pipeline Spark pour réduire le temps d'exécution et la mémoire utilisée."
+df = spark.read.parquet("data").repartition(100).cache(); df.join(broadcast(small_df), "key"),Partitionnement, caching, broadcast join, tuning des ressources.
+Optimisation Modèles,Comment optimisez-vous les hyperparamètres d’un modèle ?,Question de coding interview : "Utilisez Optuna pour optimiser les hyperparamètres d'un modèle XGBoost sur le dataset Breast Cancer."
+import optuna; def objective(trial): params = {"max_depth": trial.suggest_int("max_depth", 2, 10)}; return cross_val_score(XGBClassifier(**params), X, y, cv=5).mean(),Bayesian optimization, cross-validation, reproductibilité.
+Deep Learning,Expliquez le mécanisme d’attention dans les Transformers.,Question de coding interview : "Implémentez un mécanisme d'attention simple en PyTorch pour une séquence de mots."
+attention = torch.matmul(queries, keys.transpose(-2, -1)) / torch.sqrt(d_k); attention = torch.softmax(attention, dim=-1); output = torch.matmul(attention, values),QKV, softmax, parallélisation, dépendances longues.
+Déploiement/MLOps,Quels outils utilisez-vous pour déployer des modèles en production ?,Question de coding interview : "Écrivez un Dockerfile pour déployer un modèle FastAPI avec ONNX Runtime."
+FROM python:3.9; RUN pip install fastapi uvicorn onnxruntime; COPY model.onnx app.py /app/; CMD ["uvicorn", "app:app", "--host", "0.0.0.0"],Conteneurisation, ONNX, FastAPI, scalabilité.
+Architecture Data/IA,Comment concevriez-vous une architecture Data/IA pour une plateforme temps réel ?,Question de coding interview : "Dessinez un schéma d'architecture pour un système de recommandation en temps réel, puis écrivez un snippet  sur AWS."
+resource "aws_msk_cluster" "kafka" { ... }; resource "aws_ecs_task_definition" "flink" { ... },Kafka, Flink, Terraform, scalabilité, latence.
+Pipelines ETL/ELT,Comment gérez-vous les données en temps réel ?,Question de coding interview : "Écrivez un producteur et un consommateur Kafka en Python pour traiter un flux de données en temps réel."
+from kafka import KafkaProducer; producer = KafkaProducer(bootstrap_servers="localhost:9092"); producer.send("topic", b"data"),Kafka, streaming, tolérance aux pannes, exactly-once.
+Serving/Inférence,Comment déployez-vous un modèle avec une latence <100ms ?,Question de coding interview : "Optimisez ce modèle TensorFlow pour une inférence en <100ms en utilisant la ."
+converter = tf.lite.TFLiteConverter.from_saved_model("model"); converter.optimizations = [tf.lite.Optimize.DEFAULT]; quantized_model = converter.convert(),Quantization, ONNX, TensorRT, caching, GPU.
+Sécurité/Gouvernance,Comment sécurisez-vous les données sensibles ?,Question de coding interview : "Écrivez une fonction Python pour ."
+import boto3; kms = boto3.client("kms"); encrypted = kms.encrypt(KeyId="key-id", Plaintext=b"data"); decrypted = kms.decrypt(CiphertextBlob=encrypted["CiphertextBlob"]),KMS, chiffrement, IAM, RGPD, anonymisation.
+Cloud/Infrastructure,Comment utilisez-vous l’Infrastructure as Code (IaC) ?,Question de coding interview : "Écrivez un fichier Terraform pour déployer une infrastructure Spark sur AWS EKS."
+resource "aws_eks_cluster" "spark" { ... }; resource "kubernetes_deployment" "spark_worker" { ... },Terraform, EKS, scalabilité, automatisation.
+Études de Cas,Comment diagnostiquez-vous une chute de performance en production ?,Question de coding interview : "Écrivez un script Python pour surveiller la dérive d'un modèle en production en utilisant Evidently."
+from evidently import ColumnMapping; report = Report(metrics=[DataDrift()]); report.run(reference_data=ref, current_data=cur),Monitoring, dérive, alertes, feedback loop.
+CI/CD,Comment intégrez-vous des tests dans une pipeline CI/CD ?,Question : "Écrivez un fichier .github/workflows/ci.yml pour exécuter des tests pytest et déployer un modèle si les tests passent.",
+Code : run: pytest tests/ && ./deploy_model.sh,GitHub Actions, automatisation, qualité, déploiement conditionnel.,,
+,Comment configurez-vous une pipeline CI/CD pour un projet ML ?,Question : "Configurez un pipeline GitLab CI pour entraîner un modèle et le déployer sur AWS S3 si les tests passent.",
+Code : stages: [test, train, deploy]; test: script: [pytest, flake8],GitLab CI, stages, validation, déploiement.,,
+Tests Unitaires,Comment testez-vous une fonction de prétraitement de données ?,Question : "Écrivez un test pytest pour vérifier qu'une fonction de normalisation retourne des valeurs entre 0 et 1.",
+Code : assert (normalized_data >= 0).all() and (normalized_data <= 1).all(),Pytest, assertions, validation des données.,,
+,Comment testez-vous une fonction de feature engineering ?,Question : "Écrivez un test pour vérifier qu'une fonction de création de features retourne le bon nombre de colonnes.",
+Code : assert engineered_features.shape[1] == 10,Feature engineering, pytest, validation.,,
+Tests d'Intégration,Comment testez-vous un pipeline ETL complet ?,Question : "Écrivez un test d'intégration pour vérifier qu'un pipeline Spark produit un DataFrame sans valeurs manquantes.",
+Code : assert spark_df.filter(spark_df["col"].isNull()).count() == 0,Spark, pytest, intégration, qualité des données.,,
+Tests BDD,Comment écrivez-vous un  ?,Question : "Écrivez un scénario Gherkin pour valider qu'un pipeline ETL génère un fichier de sortie valide.",
+Code : Scenario: Pipeline ETL valide\n  Given un fichier d'entrée valide\n  When le pipeline est exécuté\n  Then le fichier de sortie doit exister,Gherkin, pytest-bdd, collaboration.,,
+Déploiement,Comment déployez-vous un modèle ML avec Docker ?,Question : "Écrivez un Dockerfile pour déployer un modèle FastAPI avec ONNX Runtime.",
+Code : FROM python:3.9; RUN pip install fastapi uvicorn onnxruntime; COPY model.onnx app.py /app/,Docker, FastAPI, ONNX, conteneurisation.,,
+,Comment automatisez-vous le déploiement d'un modèle avec Terraform ?,Question : "Écrivez un fichier Terraform pour déployer un modèle sur AWS SageMaker.",
+Code : resource "aws_sagemaker_model" "model" { name = "my-model"; execution_role_arn = aws_iam_role.role.arn },Terraform, SageMaker, IaC, automatisation.,,
+Monitoring,Comment surveillez-vous un modèle en production ?,Question : "Écrivez un script Python pour  en utilisant Evidently.",
+Code : report = Report(metrics=[DataDrift()]); report.run(reference_data=ref, current_data=cur),Evidently, monitoring, dérive, observabilité.,,
+Tests de Performance,Comment testez-vous la latence d'un modèle en production ?,Question : "Écrivez un test pour mesurer la latence d'une API de prédiction et vérifier qu'elle est <100ms.",
+Code : assert response.elapsed.total_seconds() * 1000 < 100,Latence, API, tests de performance.,,
