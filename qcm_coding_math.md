@@ -395,6 +395,68 @@ def find_pairs(lst, target):
     return pairs
 ```
 
+### Q41 : Qu’est-ce qu’un context manager et comment en créer un avec `with` ?
+```python
+from contextlib import contextmanager
+@contextmanager
+def managed_resource():
+    print("Acquisition de la ressource")
+    yield
+    print("Libération de la ressource")
+```
+
+### Q42 : À quoi servent les décorateurs ? Comment créer un décorateur avec paramètres ?
+```python
+def repeat(n):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            for _ in range(n):
+                func(*args, **kwargs)
+        return wrapper
+    return decorator
+```
+
+### Q43 : Expliquez les méthodes spéciales `__repr__` et `__str__` en POO.
+- `__repr__` doit retourner une chaîne officielle plus détaillée.
+- `__str__` sert à un affichage lisible de l’objet.
+
+### Q44 : Différence entre multiprocessing et threading en Python.
+- `threading` : multitâches légères avec GIL, utile sur I/O.
+- `multiprocessing` : vrais processus, utile pour calcul CPU intensif.
+
+### Q45 : Comment gérer les exceptions personnalisées ?
+```python
+class MyError(Exception):
+    pass
+
+raise MyError("Message d'erreur spécifique")
+```
+
+### Q46 : Que sont les générateurs et comment fonctionnent-ils avec `yield` ?
+- Producteurs d’éléments un par un pour économie mémoire.
+
+### Q47 : Comment implémenter une fonction asynchrone et utiliser `await` ?
+```python
+import asyncio
+async def fetch():
+    await asyncio.sleep(1)
+    return "done"
+```
+
+### Q48 : À quoi sert la fonction `__hash__` dans une classe ?
+- Permet à l’objet d’être utilisé dans un `set` ou comme clé de dictionnaire.
+
+### Q49 : Comment profiler une fonction en Python ?
+```python
+import cProfile
+cProfile.run('ma_fonction()')
+```
+
+### Q50 : Expliquez la différence entre mutable et immutable avec un exemple.
+- Mutable : listes, dictionnaires (modifiables).
+- Immutable : tuples, chaînes (non modifiables).
+
+
 ---
 
 # **40+ Questions/Réponses Django/SQL**
@@ -709,6 +771,55 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 ```
 
+
+
+### Q41 : Comment gérer une transaction atomique dans Django ?
+```python
+from django.db import transaction
+with transaction.atomic():
+    # bloc atomique
+    pass
+```
+
+### Q42 : Expliquez l’utilisation des signaux dans Django, donnez un exemple.
+- Permettent de déclencher des actions lors de certains événements : sauvegarde, suppression.
+
+### Q43 : Comment créer un `custom manager` et un `queryset` personnalisé ?
+```python
+class LivreManager(models.Manager):
+    def recent(self):
+        return self.filter(date_publication__gte='2024-01-01')
+```
+
+### Q44 : Qu’est-ce que `select_related` et `prefetch_related` ? Différences ?
+- `select_related` : jointure SQL en une seule requête (ForeignKey).
+- `prefetch_related` : effectue une requête supplémentaire pour ManyToMany.
+
+### Q45 : Comment protéger une vue avec des permissions personnalisées ?
+- Utiliser `@permission_required` ou créer une classe héritée de `BasePermission`.
+
+### Q46 : Comment implémenter un middleware Django personnalisé ?
+- Créer une classe avec méthode `__call__` qui modifie `request` ou `response`.
+
+### Q47 : Comment mettre en place la pagination avec Django ORM ?
+```python
+from django.core.paginator import Paginator
+paginator = Paginator(queryset, 10)
+page = paginator.page(1)
+```
+
+### Q48 : Quelles sont les bonnes pratiques pour optimiser les requêtes ORM ?
+- Utiliser `select_related`, `prefetch_related`.
+- Limiter les champs avec `.only()` ou `.values()`.
+
+### Q49 : Comment sécuriser les données sensibles stockées dans la base ?
+- Chiffrement des champs, hashing des mots de passe (Django gère via `User`).
+
+### Q50 : Comment tester une API REST Django avec le framework Django REST ?
+- Utiliser `APIClient` dans les tests pour simuler requêtes HTTP.
+
+
+
 ---
 
 # **40 Questions/Réponses pour Data Science, IA & Machine Learning Engineer**
@@ -993,4 +1104,53 @@ Un équilibre entre :
 - **Bias** : Erreur due à une hypothèse trop simpliste.
 - **Variance** : Erreur due à une sensibilité excessive aux données d’entraînement.
 
----
+
+## Questions ML/IA Complémentaires
+
+### Q41 : Qu’est-ce que le bagging, le boosting et le stacking en apprentissage par ensemble ?
+- Bagging : entraînement de plusieurs modèles indépendants et agrégation par vote ou moyenne.
+- Boosting : entraînement séquentiel où chaque modèle corrige les erreurs du précédent.
+- Stacking : apprentissage d’un modèle combiné à partir de sorties de plusieurs modèles de base.
+
+### Q42 : Comment gérer le déséquilibre des classes dans un dataset ?
+- Techniques de suréchantillonnage (SMOTE), sous-échantillonnage, ou ajustement des poids de classe.
+
+### Q43 : Expliquez le principe des auto-encodeurs variationnels (VAE).
+- Modèles probabilistes qui encodent les données dans un espace latent et génèrent des échantillons.
+
+### Q44 : Qu’est-ce qu’un modèle bayésien et dans quel cas l’utiliser ?
+- Modèle basé sur la théorie des probabilités, utile pour gérer l’incertitude et incorporer des connaissances a priori.
+
+### Q45 : Comment interpréter un modèle complexe avec SHAP ou LIME ?
+- Explanation locale ou globale de l’impact des features sur les prédictions.
+
+### Q46 : Comment déployer une pipeline MLOps robuste ?
+- Intégration continue, tests automatiques, monitoring du modèle et gestion du cycle de vie complet.
+
+### Q47 : Quelles sont les bonnes pratiques pour monitorer un modèle ML en production ?
+- Suivi des performances, détection du drift conceptuel et données, alerting automatisé.
+
+### Q48 : Expliquez les avantages de l’utilisation de Kubernetes pour déployer des modèles ML.
+- Scalable, gestion des ressources, déploiement en continu, tolérance aux pannes.
+
+### Q49 : Comment optimiser l’apprentissage profond avec la pruning et la quantization ?
+- Pruning : suppression des connexions inutiles.
+- Quantization : réduction de la précision des poids pour accélérer l’inférence.
+
+### Q50 : Qu’est-ce que le tuning hyperparamétrique et quels outils peut-on utiliser ?
+- Recherche systématique des meilleures combinaisons de paramètres (ex : Optuna, Hyperopt).
+
+### Q51 : Comment gérer la qualité des données dans un pipeline ML ?
+- Validation automatique, nettoyage, détection d’anomalies et gestion des valeurs manquantes.
+
+### Q52 : Quelles métriques utiliser pour évaluer un modèle de classification déséquilibré ?
+- AUPRC, F1-score, Matthews correlation coefficient, en complément de la précision.
+
+### Q53 : Quelle méthodologie Agile peut-on appliquer à un projet ML ?
+- Itérations rapides, feedback continu, prototypes fonctionnels, revue de résultats avec parties prenantes.
+
+### Q54 : Comment implémenter un système de versionning des modèles et des datasets ?
+- Utilisation d’outils comme MLflow, DVC ou ClearML.
+
+### Q55 : Quelles questions éthiques poser avant de déployer un modèle d’IA ?
+- Biais dans les données, impact sociétal, transparence, protection de la vie privée.
