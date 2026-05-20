@@ -1,0 +1,4 @@
+uv.lock
+.venv/
+AutogluonModels
+__marimo__/
